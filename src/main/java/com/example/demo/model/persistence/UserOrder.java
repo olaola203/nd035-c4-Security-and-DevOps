@@ -33,7 +33,9 @@ public class UserOrder {
 
     public static UserOrder createFromCart(Cart cart) {
         UserOrder order = new UserOrder();
-        order.setItems(cart.getItems().stream().collect(Collectors.toList()));
+        if (null != cart.getItems()) {
+            order.setItems(cart.getItems().stream().collect(Collectors.toList()));
+        }
         order.setTotal(cart.getTotal());
         order.setUser(cart.getUser());
         return order;
